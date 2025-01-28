@@ -1,0 +1,22 @@
+#installed rancher-desktop
+#install homebrew (already has)
+
+
+
+
+brew install kubectl e9s
+brew install tmux vim
+
+#to find the config for rancher build
+cd ~/.kube/config 
+
+
+#set bash
+~/.bashrc
+
+#set indent
+~/.vimrc
+
+kubectl get pods
+
+
