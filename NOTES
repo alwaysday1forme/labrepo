@@ -4,19 +4,23 @@
 
 
 
-brew install kubectl e9s
+brew install kubectl k9s
 brew install tmux vim
 
 #to find the config for rancher build
 cd ~/.kube/config 
 
 
-#set bash
-~/.bashrc
-
 #set indent
 ~/.vimrc
+autoload -U +X compinit && compinit
+source <(kubectl completion zsh)
 
+
+
+#kube get pods
 kubectl get pods
 
+#to switch between clusters
+kubectl config get-contexts
 
