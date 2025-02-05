@@ -16,11 +16,43 @@ cd ~/.kube/config
 autoload -U +X compinit && compinit
 source <(kubectl completion zsh)
 
+#start Docker
+launchctl start Docker
+#or
+open -a Docker
+
+
+#k get pods
+kubectl get pods -o wide
 
 
 #kube get pods
 kubectl get pods
 
 #to switch between clusters
-kubectl config get-contexts
+kubectl config get-contexts rancher-desktop
 
+
+#to explain everything of pods
+k explain pods
+
+
+#rancher desktop provisions the cluster
+#rancher runs on the desktop
+#routes to the API Server on 6443
+#
+
+
+#CONTROL PLANE
+#etcd
+#scheduler
+#API Server    ----->    this is where the port 6443
+#
+#There's others
+#
+
+#A GOOD WAY TO MAKE A FILE.
+k run nginx --image=nginx --dry-run=client -o yaml > nginx.yam
+
+#To apply the configuration file
+k apply -f nginx.yaml
