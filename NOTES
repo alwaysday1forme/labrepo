@@ -58,4 +58,5 @@ k apply -f nginx.yaml
 #get interactive
 k exec -it httpd -- /bin/bash
 
-
+#spec-strategy for how they recreate or rolling update
+k edit deployment.apps test
