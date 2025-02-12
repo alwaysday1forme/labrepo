@@ -22,3 +22,12 @@ spec:
           ports:
             - containerPort: 9000
 
+        - image: httpd
+          name: mealie
+          ports:
+            - containerPort: 8000
+
+        - image: nginx
+          name: mealie
+          ports:
+            - containerPort: 7000

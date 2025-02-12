@@ -20,7 +20,7 @@ open -a Docker
 
 
 #k get pods
-kubectl get pods -o wide
+kubectl get pods -o wide -A
 
 
 #to switch between clusters
@@ -72,3 +72,14 @@ k config get-context
 k config set-context --current --namespace
 
 
+#PORT FORWARDING
+k port-forward -n mealie pods/mealie-xxxxxx-xxxxxxx 9000  #9000 being the port
+
+
+
+#to get into the virtual machine of rancher desktop to get to the CNI
+rdctl shell bash
+
+#INSIDE RANCHER 
+cd /etc/cni/
+ls #to find flannel / cilium /calico
