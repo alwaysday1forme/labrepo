@@ -21,13 +21,10 @@ spec:
           name: mealie
           ports:
             - containerPort: 9000
-
-        - image: httpd
-          name: mealie
-          ports:
-            - containerPort: 8000
-
-        - image: nginx
-          name: mealie
-          ports:
-            - containerPort: 7000
+          volumeMounts:
+            - mountPath: /app/data
+              name: mealie-data
+      volumes:
+        - name: mealie-data
+          persistentVolumeClaim:
+            claimName: mealie-data

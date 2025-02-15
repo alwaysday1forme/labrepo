@@ -46,7 +46,7 @@ k explain pods
 
 
 #A GOOD WAY TO MAKE A FILE.
-k run nginx --image=nginx --dry-run=client -o yaml > nginx.yam
+k run nginx --image=nginx --dry-run=client -o yaml > nginx.yaml
 
 #To apply the configuration file
 k apply -f nginx.yaml
@@ -75,11 +75,24 @@ k config set-context --current --namespace
 #PORT FORWARDING
 k port-forward -n mealie pods/mealie-xxxxxx-xxxxxxx 9000  #9000 being the port
 
-
+###############
+#FIND OUT HOW TO MAKE PERSISTENT
+###############
 
 #to get into the virtual machine of rancher desktop to get to the CNI
 rdctl shell bash
 
 #INSIDE RANCHER 
 cd /etc/cni/
-ls #to find flannel / cilium /calico
+#to find what type it is: flannel / cilium /calico
+
+
+
+#to jump into a pod
+k exec -it nginx-storage -- bash
+
+
+#to find the persistent volume claims
+k get persistentvolumeclaims
+
+
