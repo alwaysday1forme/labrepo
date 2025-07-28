@@ -1,0 +1,22 @@
+
+module 2:
+- provisioning an infra for hosting kubernetes
+
+#ports
+#kube api 6443
+#etcd 2379 and 2380
+#kubelet 10250
+#ingress and services 80 and 443
+
+
+- installation procdure overview
+#install CRI
+#install kubeadm, kubectl, kubelet (already on exam)
+#initialize kubeadm init 
+#configure the client
+#setup network agent
+#add other nodes
+#verify availability
+
+
+
