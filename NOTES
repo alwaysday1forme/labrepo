@@ -1,0 +1,98 @@
+#installed rancher-desktop
+#install homebrew (already has)
+
+brew install kubectl k9s
+brew install tmux vim
+
+#to find the config for rancher build
+cd ~/.kube/config 
+
+
+#set indent
+~/.vimrc
+autoload -U +X compinit && compinit
+source <(kubectl completion zsh)
+
+#start Docker
+launchctl start Docker
+#or
+open -a Docker
+
+
+#k get pods
+kubectl get pods -o wide -A
+
+
+#to switch between clusters
+kubectl config get-contexts rancher-desktop
+
+
+#to explain everything of pods
+k explain pods
+
+
+#rancher desktop provisions the cluster
+#rancher runs on the desktop
+#routes to the API Server on 6443
+#
+
+
+#CONTROL PLANE
+#etcd
+#scheduler
+#API Server    ----->    this is where the port 6443
+#
+#There's others
+
+
+#A GOOD WAY TO MAKE A FILE.
+k run nginx --image=nginx --dry-run=client -o yaml > nginx.yaml
+
+#To apply the configuration file
+k apply -f nginx.yaml
+
+#to copy from the website k8s.io
+:set paste
+
+
+#get interactive
+k exec -it httpd -- /bin/bash
+
+#spec-strategy for how they recreate or rolling update
+k edit deployment.apps test
+
+#make a namespace
+k create namespace mealie --dry-run=client -o yaml > namespace.yaml
+k apply -f namespace.yaml
+
+#get the context ( this sits higher than the namespace
+k config get-context
+
+#change namespace
+k config set-context --current --namespace
+
+
+#PORT FORWARDING
+k port-forward -n mealie pods/mealie-xxxxxx-xxxxxxx 9000  #9000 being the port
+
+###############
+#FIND OUT HOW TO MAKE PERSISTENT
+###############
+
+#to get into the virtual machine of rancher desktop to get to the CNI
+rdctl shell bash
+
+#INSIDE RANCHER 
+cd /etc/cni/
+#to find what type it is: flannel / cilium /calico
+
+
+
+#to jump into a pod
+k exec -it nginx-storage -- bash
+
+
+#to find the persistent volume claims
+k get persistentvolumeclaims
+
+
