@@ -9,7 +9,7 @@ module 2:
 #ingress and services 80 and 443
 
 
-- installation procdure overview
+- installation procedure overview
 #install CRI
 #install kubeadm, kubectl, kubelet (already on exam)
 #initialize kubeadm init 
@@ -19,4 +19,12 @@ module 2:
 #verify availability
 
 
+- configuring linux kernel settings for kubernetes networking
+#bridge iptables firewall rules and enable
+#net.bridge.bridge-nf-call-iptables = 1
+#net.ipv4.ip_forward = 1
+#net.bridge.bridge-nf-call-ip6tables = 1
+#net.ipv6.ip_forward = 1
+
+#/etc/sysctl.d/99-kubernetes-cri.conf
 
